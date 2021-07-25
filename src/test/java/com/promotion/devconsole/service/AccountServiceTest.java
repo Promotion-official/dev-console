@@ -84,4 +84,16 @@ public class AccountServiceTest {
 
         assertFalse(isLoginSuccess);
     }
+
+    @Test
+    public void testSignUp() {
+        String id = lorem.getWords(1);
+        String pw = lorem.getWords(1);
+        String amongToken = lorem.getWords(1);
+
+        Developer developer = new Developer(id, pw, amongToken, null);
+        accountService.signUp(id, pw, amongToken);
+
+        verify(developerRepository).save(developer);
+    }
 }
