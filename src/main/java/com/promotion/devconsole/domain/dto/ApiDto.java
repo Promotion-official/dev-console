@@ -3,8 +3,8 @@ package com.promotion.devconsole.domain.dto;
 import lombok.*;
 
 @AllArgsConstructor
-@NoArgsConstructor
-@Getter @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
 @EqualsAndHashCode
 @ToString
 public class ApiDto {

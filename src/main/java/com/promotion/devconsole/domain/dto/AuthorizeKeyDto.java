@@ -4,8 +4,8 @@ import com.promotion.devconsole.domain.Permission;
 import lombok.*;
 
 @AllArgsConstructor
-@NoArgsConstructor
-@Getter @Setter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
 @EqualsAndHashCode
 @ToString
 public class AuthorizeKeyDto {

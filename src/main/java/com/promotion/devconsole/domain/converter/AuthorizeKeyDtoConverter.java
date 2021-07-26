@@ -14,7 +14,11 @@ public class AuthorizeKeyDtoConverter implements DtoConverter<AuthorizeKey, Auth
 
     @Override
     public AuthorizeKey convertToEntity(AuthorizeKeyDto dto) {
-        return new AuthorizeKey(dto.getAuthorizeKey(), dto.getApi().getName(), dto.getPermission().name());
+        return AuthorizeKey.builder()
+                .authorizeKey(dto.getAuthorizeKey())
+                .api(dto.getApi().getName())
+                .permission(dto.getPermission().name())
+                .build();
     }
 
     @Override

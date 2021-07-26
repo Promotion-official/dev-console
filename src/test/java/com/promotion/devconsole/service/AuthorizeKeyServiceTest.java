@@ -36,7 +36,10 @@ public class AuthorizeKeyServiceTest {
 
         authorizeKeyDtoConverter = new AuthorizeKeyDtoConverter(apiRepository);
 
-        authorizeKeyService = new AuthorizeKeyService(authorizeKeyRepository, authorizeKeyDtoConverter, passwordEncoder);
+        authorizeKeyService = new AuthorizeKeyService(
+                authorizeKeyRepository,
+                authorizeKeyDtoConverter,
+                passwordEncoder);
 
         lorem = LoremIpsum.getInstance();
     }
