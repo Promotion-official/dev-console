@@ -1,6 +1,7 @@
 package com.promotion.devconsole.service;
 
 import com.promotion.devconsole.domain.Permission;
+import com.promotion.devconsole.domain.converter.ApiDtoConverter;
 import com.promotion.devconsole.domain.converter.AuthorizeKeyDtoConverter;
 import com.promotion.devconsole.domain.dto.ApiDto;
 import com.promotion.devconsole.domain.dto.AuthorizeKeyDto;
@@ -23,6 +24,7 @@ public class AuthorizeKeyServiceTest {
     private PasswordEncoder passwordEncoder;
 
     private AuthorizeKeyDtoConverter authorizeKeyDtoConverter;
+    private ApiDtoConverter apiDtoConverter;
 
     private AuthorizeKeyService authorizeKeyService;
 
@@ -35,6 +37,7 @@ public class AuthorizeKeyServiceTest {
         passwordEncoder = mock(PasswordEncoder.class);
 
         authorizeKeyDtoConverter = new AuthorizeKeyDtoConverter(apiRepository);
+        apiDtoConverter = new ApiDtoConverter();
 
         authorizeKeyService = new AuthorizeKeyService(
                 authorizeKeyRepository,
@@ -70,7 +73,7 @@ public class AuthorizeKeyServiceTest {
 
         when(apiRepository.getById(apiDto.getName()))
                 //TODO 지인호 | ApiDtoConverter 만들어서 수정 | 2021.07.26
-                .thenReturn(new Api(apiDto.getName(), apiDto.getUrl()));
+                .thenReturn(apiDtoConverter.convertToEntity(apiDto));
 
         AuthorizeKeyDto expectedResult = new AuthorizeKeyDto(key, apiDto, randomPermission);
 
