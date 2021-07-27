@@ -7,8 +7,9 @@ import lombok.*;
 @Getter
 @EqualsAndHashCode
 @ToString
-public class AuthorizeKeyDto {
-    private String authorizeKey;
-    private ApiDto api;
-    private PermissionDto permission;
+public class DeveloperDto {
+    private String id;
+    private String pw;
+    private String authToken;
+    private AuthorizeKeyDto authorizeKey;
 }
