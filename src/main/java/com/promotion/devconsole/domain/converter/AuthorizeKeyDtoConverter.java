@@ -1,35 +1,40 @@
 package com.promotion.devconsole.domain.converter;
 
-import com.promotion.devconsole.domain.Permission;
 import com.promotion.devconsole.domain.dto.ApiDto;
 import com.promotion.devconsole.domain.dto.AuthorizeKeyDto;
-import com.promotion.devconsole.entity.Api;
-import com.promotion.devconsole.entity.AuthorizeKey;
+import com.promotion.devconsole.domain.dto.PermissionDto;
+import com.promotion.devconsole.domain.entity.Api;
+import com.promotion.devconsole.domain.entity.AuthorizeKey;
+import com.promotion.devconsole.domain.entity.Permission;
 import com.promotion.devconsole.repository.ApiRepository;
+import com.promotion.devconsole.repository.PermissionRepository;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class AuthorizeKeyDtoConverter implements DtoConverter<AuthorizeKey, AuthorizeKeyDto> {
     private final ApiRepository apiRepository;
+    private final PermissionRepository permissionRepository;
+    private final PermissionDtoConverter permissionDtoConverter;
 
     @Override
     public AuthorizeKey convertToEntity(AuthorizeKeyDto dto) {
         return AuthorizeKey.builder()
                 .authorizeKey(dto.getAuthorizeKey())
                 .api(dto.getApi().getName())
-                .permission(dto.getPermission().name())
+                .permission(dto.getPermission().getId())
                 .build();
     }
 
     @Override
     public AuthorizeKeyDto convertToDto(AuthorizeKey entity) {
         Api api = apiRepository.getById(entity.getApi());
-        ApiDto dto = new ApiDto(api.getName(), api.getUrl());
+        ApiDto apiDto = new ApiDto(api.getName(), api.getUrl());
 
         String key = entity.getAuthorizeKey();
 
-        Permission permission = Permission.valueOf(entity.getPermission());
+        Permission permission = permissionRepository.getById(entity.getPermission());
+        PermissionDto permDto = permissionDtoConverter.convertToDto(permission);
 
-        return new AuthorizeKeyDto(key, dto, permission);
+        return new AuthorizeKeyDto(key, apiDto, permDto);
     }
 }

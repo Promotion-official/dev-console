@@ -1,6 +1,6 @@
 package com.promotion.devconsole.service;
 
-import com.promotion.devconsole.domain.Permission;
+import com.promotion.devconsole.domain.PermissionEnum;
 import com.promotion.devconsole.domain.converter.AuthorizeKeyDtoConverter;
 import com.promotion.devconsole.domain.dto.AuthorizeKeyDto;
 import com.promotion.devconsole.repository.AuthorizeKeyRepository;
@@ -15,7 +15,7 @@ public class AuthorizeKeyService {
     private final AuthorizeKeyDtoConverter authorizeKeyDtoConverter;
     private final PasswordEncoder passwordEncoder;
 
-    public String generateAuthorizeKey(Permission permission, String key) {
+    public String generateAuthorizeKey(PermissionEnum permission, String key) {
         return passwordEncoder.encode(permission + key);
     }
 

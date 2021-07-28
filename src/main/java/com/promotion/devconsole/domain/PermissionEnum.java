@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public enum Permission {
+public enum PermissionEnum {
     DEVELOPER(10), PRODUCT(100), OPERATOR(100), ADMINISTRATOR(1000);
 
     private final int requestLimit; //request limit per min
