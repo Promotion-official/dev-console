@@ -12,11 +12,11 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class ProductKeyDtoConverter implements DtoConverter<ProductKey, ProductKeyDto>{
-    private ProductRepository productRepository;
-    private AuthorizeKeyRepository authorizeKeyRepository;
+    private final ProductRepository productRepository;
+    private final AuthorizeKeyRepository authorizeKeyRepository;
 
-    private ProductDtoConverter productDtoConverter;
-    private AuthorizeKeyDtoConverter authorizeKeyDtoConverter;
+    private final ProductDtoConverter productDtoConverter;
+    private final AuthorizeKeyDtoConverter authorizeKeyDtoConverter;
 
     @Override
     public ProductKey convertToEntity(ProductKeyDto dto) {
@@ -31,7 +31,7 @@ public class ProductKeyDtoConverter implements DtoConverter<ProductKey, ProductK
         Product product = productRepository.getById(entity.getProduct());
         ProductDto productDto = productDtoConverter.convertToDto(product);
 
-        AuthorizeKey authorizeKey = authorizeKeyRepository.getById(entity.getAuthorizeKey());
+        AuthorizeKey authorizeKey = authorizeKeyRepository.getAuthorizeKeyByAuthorizeKey(entity.getAuthorizeKey());
         AuthorizeKeyDto authorizeKeyDto = authorizeKeyDtoConverter.convertToDto(authorizeKey);
         return new ProductKeyDto(productDto, authorizeKeyDto);
     }

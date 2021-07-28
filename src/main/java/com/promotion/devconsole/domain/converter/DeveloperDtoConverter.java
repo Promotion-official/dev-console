@@ -24,7 +24,7 @@ public class DeveloperDtoConverter implements DtoConverter<Developer, DeveloperD
 
     @Override
     public DeveloperDto convertToDto(Developer entity) {
-        AuthorizeKey key = authorizeKeyRepository.getById(entity.getAuthorizeKey());
+        AuthorizeKey key = authorizeKeyRepository.getAuthorizeKeyByAuthorizeKey(entity.getAuthorizeKey());
         AuthorizeKeyDto keyDto = authorizeKeyDtoConverter.convertToDto(key);
         return new DeveloperDto(
                 entity.getId(),

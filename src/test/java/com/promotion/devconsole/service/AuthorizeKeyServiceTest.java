@@ -72,6 +72,8 @@ public class AuthorizeKeyServiceTest {
 
     @Test
     public void testGetAuthorizeKey() {
+        Long idx = new Random().nextLong();
+
         String key = lorem.getWords(1);
         int randomPermissionIdx = new Random().nextInt(PermissionEnum.values().length);
 
@@ -83,9 +85,9 @@ public class AuthorizeKeyServiceTest {
         when(apiRepository.getById(apiDto.getName()))
                 .thenReturn(apiDtoConverter.convertToEntity(apiDto));
 
-        AuthorizeKeyDto expectedResult = new AuthorizeKeyDto(key, apiDto, permDto);
+        AuthorizeKeyDto expectedResult = new AuthorizeKeyDto(idx, key, apiDto, permDto);
 
-        when(authorizeKeyRepository.getById(key))
+        when(authorizeKeyRepository.getAuthorizeKeyByAuthorizeKey(key))
                 .thenReturn(authorizeKeyDtoConverter.convertToEntity(expectedResult));
 
         when(permissionRepository.getById(permDto.getId()))

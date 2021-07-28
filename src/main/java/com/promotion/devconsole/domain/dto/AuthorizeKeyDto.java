@@ -8,6 +8,7 @@ import lombok.*;
 @EqualsAndHashCode
 @ToString
 public class AuthorizeKeyDto {
+    private Long idx;
     private String authorizeKey;
     private ApiDto api;
     private PermissionDto permission;
