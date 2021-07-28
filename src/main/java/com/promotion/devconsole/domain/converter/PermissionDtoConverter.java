@@ -1,7 +1,7 @@
 package com.promotion.devconsole.domain.converter;
 
 import com.promotion.devconsole.domain.dto.PermissionDto;
-import com.promotion.devconsole.entity.Permission;
+import com.promotion.devconsole.domain.entity.Permission;
 
 public class PermissionDtoConverter implements DtoConverter<Permission, PermissionDto> {
     @Override

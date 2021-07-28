@@ -7,7 +7,7 @@ import com.promotion.devconsole.domain.converter.PermissionDtoConverter;
 import com.promotion.devconsole.domain.dto.ApiDto;
 import com.promotion.devconsole.domain.dto.AuthorizeKeyDto;
 import com.promotion.devconsole.domain.dto.PermissionDto;
-import com.promotion.devconsole.entity.Permission;
+import com.promotion.devconsole.domain.entity.Permission;
 import com.promotion.devconsole.repository.ApiRepository;
 import com.promotion.devconsole.repository.AuthorizeKeyRepository;
 import com.promotion.devconsole.repository.PermissionRepository;

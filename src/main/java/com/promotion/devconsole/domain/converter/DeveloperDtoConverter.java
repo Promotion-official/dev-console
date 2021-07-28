@@ -2,8 +2,8 @@ package com.promotion.devconsole.domain.converter;
 
 import com.promotion.devconsole.domain.dto.AuthorizeKeyDto;
 import com.promotion.devconsole.domain.dto.DeveloperDto;
-import com.promotion.devconsole.entity.AuthorizeKey;
-import com.promotion.devconsole.entity.Developer;
+import com.promotion.devconsole.domain.entity.AuthorizeKey;
+import com.promotion.devconsole.domain.entity.Developer;
 import com.promotion.devconsole.repository.AuthorizeKeyRepository;
 import lombok.RequiredArgsConstructor;
 

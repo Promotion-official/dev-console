@@ -1,4 +1,4 @@
-package com.promotion.devconsole.entity;
+package com.promotion.devconsole.domain.entity;
 
 import lombok.*;
 

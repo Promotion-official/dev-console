@@ -1,7 +1,7 @@
 package com.promotion.devconsole.domain.converter;
 
 import com.promotion.devconsole.domain.dto.PendingProductDto;
-import com.promotion.devconsole.entity.PendingProduct;
+import com.promotion.devconsole.domain.entity.PendingProduct;
 
 public class PendingProductDtoConverter implements DtoConverter<PendingProduct, PendingProductDto> {
     @Override

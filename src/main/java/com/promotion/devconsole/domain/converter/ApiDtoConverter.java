@@ -1,7 +1,7 @@
 package com.promotion.devconsole.domain.converter;
 
 import com.promotion.devconsole.domain.dto.ApiDto;
-import com.promotion.devconsole.entity.Api;
+import com.promotion.devconsole.domain.entity.Api;
 
 public class ApiDtoConverter implements DtoConverter<Api, ApiDto> {
     @Override

@@ -2,8 +2,8 @@ package com.promotion.devconsole.domain.converter;
 
 import com.promotion.devconsole.domain.dto.DeveloperDto;
 import com.promotion.devconsole.domain.dto.ProductDto;
-import com.promotion.devconsole.entity.Developer;
-import com.promotion.devconsole.entity.Product;
+import com.promotion.devconsole.domain.entity.Developer;
+import com.promotion.devconsole.domain.entity.Product;
 import com.promotion.devconsole.repository.DeveloperRepository;
 import lombok.RequiredArgsConstructor;
 
