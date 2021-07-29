@@ -5,7 +5,7 @@ import com.promotion.devconsole.domain.entity.Permission;
 
 public class PermissionDtoConverter implements DtoConverter<Permission, PermissionDto> {
     @Override
-    public Permission convertToEntity(PermissionDto dto) {
+    public Permission toEntity(PermissionDto dto) {
         return Permission.builder()
                 .id(dto.getId())
                 .requestLimitPermission(dto.getRequestLimitPermission())
@@ -13,7 +13,7 @@ public class PermissionDtoConverter implements DtoConverter<Permission, Permissi
     }
 
     @Override
-    public PermissionDto convertToDto(Permission entity) {
+    public PermissionDto toDto(Permission entity) {
         return new PermissionDto(entity.getId(), entity.getRequestLimitPermission());
     }
 }

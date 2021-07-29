@@ -17,8 +17,8 @@ import java.time.LocalDateTime;
 public class PendingProduct implements Serializable {
 
  private static final long serialVersionUID = 5450189189498800446L;
- @Id
- @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+ @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
  @Column(name = "id")
  private Integer id;
 

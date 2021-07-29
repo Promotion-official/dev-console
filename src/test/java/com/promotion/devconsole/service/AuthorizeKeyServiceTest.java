@@ -83,12 +83,12 @@ public class AuthorizeKeyServiceTest {
         PermissionDto permDto = new PermissionDto(randomPermission.name(), randomPermission.getRequestLimit());
 
         when(apiRepository.getById(apiDto.getName()))
-                .thenReturn(apiDtoConverter.convertToEntity(apiDto));
+                .thenReturn(apiDtoConverter.toEntity(apiDto));
 
         AuthorizeKeyDto expectedResult = new AuthorizeKeyDto(idx, key, apiDto, permDto);
 
         when(authorizeKeyRepository.getAuthorizeKeyByAuthorizeKey(key))
-                .thenReturn(authorizeKeyDtoConverter.convertToEntity(expectedResult));
+                .thenReturn(authorizeKeyDtoConverter.toEntity(expectedResult));
 
         when(permissionRepository.getById(permDto.getId()))
                 .thenReturn(new Permission(permDto.getId(), permDto.getRequestLimitPermission()));

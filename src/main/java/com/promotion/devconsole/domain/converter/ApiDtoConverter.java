@@ -5,7 +5,7 @@ import com.promotion.devconsole.domain.entity.Api;
 
 public class ApiDtoConverter implements DtoConverter<Api, ApiDto> {
     @Override
-    public Api convertToEntity(ApiDto dto) {
+    public Api toEntity(ApiDto dto) {
         return Api.builder()
                 .name(dto.getName())
                 .url(dto.getUrl())
@@ -13,7 +13,7 @@ public class ApiDtoConverter implements DtoConverter<Api, ApiDto> {
     }
 
     @Override
-    public ApiDto convertToDto(Api entity) {
+    public ApiDto toDto(Api entity) {
         return new ApiDto(entity.getName(), entity.getUrl());
     }
 }

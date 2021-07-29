@@ -20,6 +20,6 @@ public class AuthorizeKeyService {
     }
 
     public AuthorizeKeyDto getAuthorizeKey(String key) {
-        return authorizeKeyDtoConverter.convertToDto(authorizeKeyRepository.getAuthorizeKeyByAuthorizeKey(key));
+        return authorizeKeyDtoConverter.toDto(authorizeKeyRepository.getAuthorizeKeyByAuthorizeKey(key));
     }
 }

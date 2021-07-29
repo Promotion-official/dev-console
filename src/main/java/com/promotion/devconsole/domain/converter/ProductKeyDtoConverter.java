@@ -19,7 +19,7 @@ public class ProductKeyDtoConverter implements DtoConverter<ProductKey, ProductK
     private final AuthorizeKeyDtoConverter authorizeKeyDtoConverter;
 
     @Override
-    public ProductKey convertToEntity(ProductKeyDto dto) {
+    public ProductKey toEntity(ProductKeyDto dto) {
         return ProductKey.builder()
                 .product(dto.getProduct().getId())
                 .authorizeKey(dto.getAuthorizeKey().getAuthorizeKey())
@@ -27,12 +27,12 @@ public class ProductKeyDtoConverter implements DtoConverter<ProductKey, ProductK
     }
 
     @Override
-    public ProductKeyDto convertToDto(ProductKey entity) {
+    public ProductKeyDto toDto(ProductKey entity) {
         Product product = productRepository.getById(entity.getProduct());
-        ProductDto productDto = productDtoConverter.convertToDto(product);
+        ProductDto productDto = productDtoConverter.toDto(product);
 
         AuthorizeKey authorizeKey = authorizeKeyRepository.getAuthorizeKeyByAuthorizeKey(entity.getAuthorizeKey());
-        AuthorizeKeyDto authorizeKeyDto = authorizeKeyDtoConverter.convertToDto(authorizeKey);
+        AuthorizeKeyDto authorizeKeyDto = authorizeKeyDtoConverter.toDto(authorizeKey);
         return new ProductKeyDto(productDto, authorizeKeyDto);
     }
 }
