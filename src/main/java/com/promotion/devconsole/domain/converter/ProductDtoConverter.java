@@ -13,7 +13,7 @@ public class ProductDtoConverter implements DtoConverter<Product, ProductDto> {
     private final DeveloperDtoConverter developerDtoConverter;
 
     @Override
-    public Product convertToEntity(ProductDto dto) {
+    public Product toEntity(ProductDto dto) {
         return Product.builder()
                 .id(dto.getId())
                 .name(dto.getName())
@@ -23,10 +23,10 @@ public class ProductDtoConverter implements DtoConverter<Product, ProductDto> {
     }
 
     @Override
-    public ProductDto convertToDto(Product entity) {
+    public ProductDto toDto(Product entity) {
         String developerId = entity.getDeveloper();
         Developer developer = developerRepository.getById(developerId);
-        DeveloperDto developerDto = developerDtoConverter.convertToDto(developer);
+        DeveloperDto developerDto = developerDtoConverter.toDto(developer);
         return new ProductDto(
                 entity.getId(),
                 entity.getName(),

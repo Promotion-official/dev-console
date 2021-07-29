@@ -12,14 +12,14 @@ import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
 public class ProductKeyDtoConverter implements DtoConverter<ProductKey, ProductKeyDto>{
-    private ProductRepository productRepository;
-    private AuthorizeKeyRepository authorizeKeyRepository;
+    private final ProductRepository productRepository;
+    private final AuthorizeKeyRepository authorizeKeyRepository;
 
-    private ProductDtoConverter productDtoConverter;
-    private AuthorizeKeyDtoConverter authorizeKeyDtoConverter;
+    private final ProductDtoConverter productDtoConverter;
+    private final AuthorizeKeyDtoConverter authorizeKeyDtoConverter;
 
     @Override
-    public ProductKey convertToEntity(ProductKeyDto dto) {
+    public ProductKey toEntity(ProductKeyDto dto) {
         return ProductKey.builder()
                 .product(dto.getProduct().getId())
                 .authorizeKey(dto.getAuthorizeKey().getAuthorizeKey())
@@ -27,12 +27,12 @@ public class ProductKeyDtoConverter implements DtoConverter<ProductKey, ProductK
     }
 
     @Override
-    public ProductKeyDto convertToDto(ProductKey entity) {
+    public ProductKeyDto toDto(ProductKey entity) {
         Product product = productRepository.getById(entity.getProduct());
-        ProductDto productDto = productDtoConverter.convertToDto(product);
+        ProductDto productDto = productDtoConverter.toDto(product);
 
-        AuthorizeKey authorizeKey = authorizeKeyRepository.getById(entity.getAuthorizeKey());
-        AuthorizeKeyDto authorizeKeyDto = authorizeKeyDtoConverter.convertToDto(authorizeKey);
+        AuthorizeKey authorizeKey = authorizeKeyRepository.getAuthorizeKeyByAuthorizeKey(entity.getAuthorizeKey());
+        AuthorizeKeyDto authorizeKeyDto = authorizeKeyDtoConverter.toDto(authorizeKey);
         return new ProductKeyDto(productDto, authorizeKeyDto);
     }
 }

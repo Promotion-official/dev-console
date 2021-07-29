@@ -16,8 +16,8 @@ import java.io.Serializable;
 public class Permission implements Serializable {
 
  private static final long serialVersionUID = 4281117701460378816L;
- @Id
- @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+ @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
  @Column(name = "id")
  private String id;
 

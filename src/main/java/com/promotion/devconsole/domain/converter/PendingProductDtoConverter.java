@@ -5,7 +5,7 @@ import com.promotion.devconsole.domain.entity.PendingProduct;
 
 public class PendingProductDtoConverter implements DtoConverter<PendingProduct, PendingProductDto> {
     @Override
-    public PendingProduct convertToEntity(PendingProductDto dto) {
+    public PendingProduct toEntity(PendingProductDto dto) {
         return PendingProduct.builder()
                 .id(dto.getId())
                 .isPendSuccess(dto.getIsPendSuccess())
@@ -14,7 +14,7 @@ public class PendingProductDtoConverter implements DtoConverter<PendingProduct, 
     }
 
     @Override
-    public PendingProductDto convertToDto(PendingProduct entity) {
+    public PendingProductDto toDto(PendingProduct entity) {
         return new PendingProductDto(
                 entity.getId(),
                 entity.getIsPendSuccess(),

@@ -1,6 +1,6 @@
 package com.promotion.devconsole.domain.converter;
 
 public interface DtoConverter<E, D> {
-    E convertToEntity(D dto);
-    D convertToDto(E entity);
+    E toEntity(D dto);
+    D toDto(E entity);
 }

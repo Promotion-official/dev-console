@@ -17,8 +17,7 @@ public class Api implements Serializable {
 
  private static final long serialVersionUID = 3063649780956971972L;
 
- @Id
- @GeneratedValue(strategy = GenerationType.IDENTITY)
+ @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
  @Column(name = "name")
  private String name;
 

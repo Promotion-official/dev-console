@@ -16,8 +16,8 @@ import java.io.Serializable;
 public class Developer implements Serializable {
 
  private static final long serialVersionUID = -474714203978955440L;
- @Id
- @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+ @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
  @Column(name = "id")
  private String id;
 

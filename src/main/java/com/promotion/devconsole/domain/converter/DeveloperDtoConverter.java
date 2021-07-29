@@ -13,7 +13,7 @@ public class DeveloperDtoConverter implements DtoConverter<Developer, DeveloperD
     private final AuthorizeKeyRepository authorizeKeyRepository;
 
     @Override
-    public Developer convertToEntity(DeveloperDto dto) {
+    public Developer toEntity(DeveloperDto dto) {
         return Developer.builder()
                 .id(dto.getId())
                 .pw(dto.getPw())
@@ -23,9 +23,9 @@ public class DeveloperDtoConverter implements DtoConverter<Developer, DeveloperD
     }
 
     @Override
-    public DeveloperDto convertToDto(Developer entity) {
-        AuthorizeKey key = authorizeKeyRepository.getById(entity.getAuthorizeKey());
-        AuthorizeKeyDto keyDto = authorizeKeyDtoConverter.convertToDto(key);
+    public DeveloperDto toDto(Developer entity) {
+        AuthorizeKey key = authorizeKeyRepository.getAuthorizeKeyByAuthorizeKey(entity.getAuthorizeKey());
+        AuthorizeKeyDto keyDto = authorizeKeyDtoConverter.toDto(key);
         return new DeveloperDto(
                 entity.getId(),
                 entity.getPw(),

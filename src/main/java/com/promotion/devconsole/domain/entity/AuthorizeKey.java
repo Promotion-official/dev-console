@@ -16,8 +16,12 @@ import java.io.Serializable;
 public class AuthorizeKey implements Serializable {
 
  private static final long serialVersionUID = 3601472106969795194L;
- @Id
- @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+ @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+ @Column(name = "authorize_key")
+ private Long idx;
+
+ @GeneratedValue
  @Column(name = "authorize_key")
  private String authorizeKey;
 

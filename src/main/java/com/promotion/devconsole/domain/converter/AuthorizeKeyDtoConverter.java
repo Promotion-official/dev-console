@@ -17,8 +17,9 @@ public class AuthorizeKeyDtoConverter implements DtoConverter<AuthorizeKey, Auth
     private final PermissionDtoConverter permissionDtoConverter;
 
     @Override
-    public AuthorizeKey convertToEntity(AuthorizeKeyDto dto) {
+    public AuthorizeKey toEntity(AuthorizeKeyDto dto) {
         return AuthorizeKey.builder()
+                .idx(dto.getIdx())
                 .authorizeKey(dto.getAuthorizeKey())
                 .api(dto.getApi().getName())
                 .permission(dto.getPermission().getId())
@@ -26,15 +27,17 @@ public class AuthorizeKeyDtoConverter implements DtoConverter<AuthorizeKey, Auth
     }
 
     @Override
-    public AuthorizeKeyDto convertToDto(AuthorizeKey entity) {
+    public AuthorizeKeyDto toDto(AuthorizeKey entity) {
+        Long idx = entity.getIdx();
+
         Api api = apiRepository.getById(entity.getApi());
         ApiDto apiDto = new ApiDto(api.getName(), api.getUrl());
 
         String key = entity.getAuthorizeKey();
 
         Permission permission = permissionRepository.getById(entity.getPermission());
-        PermissionDto permDto = permissionDtoConverter.convertToDto(permission);
+        PermissionDto permDto = permissionDtoConverter.toDto(permission);
 
-        return new AuthorizeKeyDto(key, apiDto, permDto);
+        return new AuthorizeKeyDto(idx, key, apiDto, permDto);
     }
 }
